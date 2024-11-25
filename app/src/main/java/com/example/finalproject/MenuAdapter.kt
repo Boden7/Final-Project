@@ -36,7 +36,7 @@ class TaskAdapter(private val context: Context, private var tasks: List<Task>,
         RecyclerView.ViewHolder(itemView) {
         private val taskCheckBox: CheckBox = itemView.findViewById(R.id.taskCheckBox)
         private val taskTitle: TextView = itemView.findViewById(R.id.taskTitle)
-        private val deleteButton: ImageView = itemView.findViewById(R.id.deleteButton)
+        private val detailsButton: ImageView = itemView.findViewById(R.id.detailsButton)
 
         fun bind(task: Task) {
             taskTitle.text = task.task
@@ -45,7 +45,7 @@ class TaskAdapter(private val context: Context, private var tasks: List<Task>,
             taskCheckBox.setOnCheckedChangeListener { _, isChecked ->
                 onTaskCheckedChange(task, isChecked)
             }
-            deleteButton.setOnClickListener {
+            detailsButton.setOnClickListener {
                 onDeleteClick(task)
             }
         }
