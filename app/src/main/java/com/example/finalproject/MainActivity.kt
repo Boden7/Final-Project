@@ -52,11 +52,11 @@ class MainActivity : AppCompatActivity() {
         //Function to update a task, update it in the task list, & update the RV
         fun update(item: MenuItem, calories: Int){
             //Get the task from the list and update its check value
-            val itemInList = items.find {it.id == item.id}
-            if (itemInList != null && itemInList.id == item.id && itemInList.name == item.name) {
+            val itemInList = items.find {it.name == item.name}
+            if (itemInList != null && itemInList.name == item.name) {
                 itemInList.calories = calories
                 //Update the task in the database
-                menuDatabaseHelper.updateItem(item.id, calories)
+                menuDatabaseHelper.updateItem(item.name, calories)
                 //Update the RV when it is ready
                 menuRecyclerView.post {
                     menuAdapter.updateItems(items)

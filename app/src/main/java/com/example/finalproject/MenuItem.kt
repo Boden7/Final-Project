@@ -3,17 +3,19 @@ package com.example.finalproject
 import android.os.Parcel
 import android.os.Parcelable
 
-class MenuItem(val id: Int, val name: String, var calories: Int)  : Parcelable {
+class MenuItem(val name: String, var calories: Int, val ingredients : String, val description: String)  : Parcelable {
     constructor(parcel: Parcel) : this(
+        parcel.readString()!!,
         parcel.readInt(),
         parcel.readString()!!,
-        parcel.readInt()
+        parcel.readString()!!,
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeInt(id)
         parcel.writeString(name)
         parcel.writeInt(calories)
+        parcel.writeString(ingredients)
+        parcel.writeString(description)
     }
 
     override fun describeContents(): Int {

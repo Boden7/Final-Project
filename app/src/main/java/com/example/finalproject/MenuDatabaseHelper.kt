@@ -10,7 +10,7 @@ class MenuDatabaseHelper(applicationContext: Context) : SQLiteOpenHelper(applica
     companion object {
         private const val DATABASE_NAME = "items.db"
         private const val DATABASE_VERSION = 1
-        private const val TABLE_NAME = "tasks"
+        private const val TABLE_NAME = "items"
         private const val COLUMN_ID = "id"
         private const val COLUMN_NAME = "name"
         private const val COLUMN_CALORIES = "calories"
