@@ -1,5 +1,6 @@
 package com.example.finalproject
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -71,6 +72,12 @@ class MainActivity : AppCompatActivity() {
             items.remove(item)
             //Update the RV
             menuAdapter.updateItems(items)
+        }
+
+        val button = findViewById<Button>(R.id.meetUsButton)
+        button.setOnClickListener {
+            val intent = Intent(this, MeetTheChef::class.java)
+            startActivity(intent)
         }
 
         //Creating the RV and its adapter
