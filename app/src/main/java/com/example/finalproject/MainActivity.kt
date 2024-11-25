@@ -11,12 +11,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var taskDatabaseHelper: TaskDatabaseHelper
-    private lateinit var taskAdapter: TaskAdapter
-    private lateinit var taskRecyclerView: RecyclerView
-    private lateinit var addTaskButton: Button
-    private lateinit var taskEditText: EditText
-    private var tasks = mutableListOf<Task>()
+    private lateinit var menuDatabaseHelper: MenuDatabaseHelper
+    private lateinit var menuAdapter: MenuAdapter
+    private lateinit var menuRecyclerView: RecyclerView
+    private lateinit var addItemButton: Button
+    private lateinit var itemEditText: EditText
+    private var items = mutableListOf<MenuItem>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,58 +27,59 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        addTaskButton = findViewById(R.id.addButton)
-        taskEditText = findViewById(R.id.editText)
-        taskDatabaseHelper = TaskDatabaseHelper.getInstance(this)
+        addItemButton = findViewById(R.id.addButton)
+        itemEditText = findViewById(R.id.editText)
+        menuDatabaseHelper = MenuDatabaseHelper.getInstance(this)
 
         //On click listener for the add task button to add a task and update the RV
-        addTaskButton.setOnClickListener{
+        addItemButton.setOnClickListener{
             //Get the task text from the user's input
-            val task = taskEditText.text.toString().trim()
-            if (task.isNotEmpty()) {
+            val item = itemEditText.text.toString().trim()
+            val calories = 100
+            if (item.isNotEmpty()) {
                 //Add the task to the database
-                taskDatabaseHelper.addTask(task)
+                menuDatabaseHelper.addItem(item, calories)
                 //Update the task list
-                tasks = taskDatabaseHelper.getAllTasks().toMutableList()
+                items = menuDatabaseHelper.getAllItems().toMutableList()
                 //Update the RV
-                taskAdapter.updateTasks(tasks)
+                menuAdapter.updateItems(items)
                 //Clear the text to prepare for the next input
-                taskEditText.text.clear()
+                itemEditText.text.clear()
             }
         }
 
         //Function to update a task, update it in the task list, & update the RV
-        fun update(task: Task, isChecked: Boolean){
+        fun update(item: MenuItem, calories: Int){
             //Get the task from the list and update its check value
-            val taskInList = tasks.find {it.id == task.id}
-            if (taskInList != null && taskInList.id == task.id && taskInList.task == task.task) {
-                taskInList.isChecked = isChecked
+            val itemInList = items.find {it.id == item.id}
+            if (itemInList != null && itemInList.id == item.id && itemInList.name == item.name) {
+                itemInList.calories = calories
                 //Update the task in the database
-                taskDatabaseHelper.updateTask(task.id, isChecked)
+                menuDatabaseHelper.updateItem(item.id, calories)
                 //Update the RV when it is ready
-                taskRecyclerView.post {
-                    taskAdapter.updateTasks(tasks)
+                menuRecyclerView.post {
+                    menuAdapter.updateItems(items)
                 }
             }
         }
 
-        //Function to delete a task, remove it from the task list, & update the RV
-        fun delete(task: Task){
-            //Delete the task from the RV
-            taskDatabaseHelper.deleteTask(task.id)
-            //Remove it from the task list
-            tasks.remove(task)
+        //Function to delete an item, remove it from the item list, & update the RV
+        fun delete(item: MenuItem){
+            //Delete the item from the RV
+            menuDatabaseHelper.deleteItem(item.id)
+            //Remove it from the item list
+            items.remove(item)
             //Update the RV
-            taskAdapter.updateTasks(tasks)
+            menuAdapter.updateItems(items)
         }
 
         //Creating the RV and its adapter
-        taskRecyclerView = findViewById(R.id.rvData)
-        taskAdapter = TaskAdapter(this, tasks, {task, isChecked -> update(task, isChecked)},
-            {task -> delete(task)})
-        taskRecyclerView.adapter = taskAdapter
-        taskRecyclerView.layoutManager = LinearLayoutManager(this)
-        tasks = taskDatabaseHelper.getAllTasks().toMutableList()
-        taskAdapter.updateTasks(tasks)
+        menuRecyclerView = findViewById(R.id.rvData)
+        menuAdapter = MenuAdapter(this, items, {item, calories -> update(item, calories)},
+            {item -> delete(item)})
+        menuRecyclerView.adapter = menuAdapter
+        menuRecyclerView.layoutManager = LinearLayoutManager(this)
+        items = menuDatabaseHelper.getAllItems().toMutableList()
+        menuAdapter.updateItems(items)
     }
 }

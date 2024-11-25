@@ -9,10 +9,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class TaskAdapter(private val context: Context, private var tasks: List<MenuItem>,
-                  private val onTaskCheckedChange: (MenuItem, Boolean) -> Unit,
+class MenuAdapter(private val context: Context, private var items: List<MenuItem>,
+                  private val onItemChange: (MenuItem, Int) -> Unit,
                   private var onDeleteClick: (MenuItem) -> Unit
-) : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
+) : RecyclerView.Adapter<MenuAdapter.TaskViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):
             TaskViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.menu_item,
@@ -21,14 +21,14 @@ class TaskAdapter(private val context: Context, private var tasks: List<MenuItem
     }
 
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
-        val task = tasks[position]
+        val task = items[position]
         holder.bind(task)
     }
 
-    override fun getItemCount(): Int = tasks.size
+    override fun getItemCount(): Int = items.size
 
-    fun updateTasks(newTasks: List<MenuItem>) {
-        tasks = newTasks
+    fun updateItems(newItems: List<MenuItem>) {
+        items = newItems
         notifyDataSetChanged()
     }
 
