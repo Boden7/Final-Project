@@ -4,15 +4,20 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView.OnItemClickListener
 import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class MenuAdapter(private val context: Context, private var items: List<MenuItem>,
-                  private val onItemChange: (MenuItem, Int) -> Unit,
-                  private var onDeleteClick: (MenuItem) -> Unit
+                  private val listener: OnItemClickListener,
+                  private var addToCart: (MenuItem) -> Unit
 ) : RecyclerView.Adapter<MenuAdapter.TaskViewHolder>() {
+    interface OnItemClickListener {
+        fun onItemClick(menuItem: MenuItem)
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):
             TaskViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.menu_item,
@@ -21,8 +26,8 @@ class MenuAdapter(private val context: Context, private var items: List<MenuItem
     }
 
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
-        val task = items[position]
-        holder.bind(task)
+        val item = items[position]
+        holder.bind(item, listener)
     }
 
     override fun getItemCount(): Int = items.size
@@ -38,11 +43,11 @@ class MenuAdapter(private val context: Context, private var items: List<MenuItem
         private val menuText: TextView = itemView.findViewById(R.id.menuItem)
         private val detailsButton: ImageView = itemView.findViewById(R.id.detailsButton)
 
-        fun bind(menuItem: MenuItem) {
+        fun bind(menuItem: MenuItem, listener: OnItemClickListener) {
             menuText.text = menuItem.name
             caloriesText.text = menuItem.calories.toString()
             detailsButton.setOnClickListener {
-                onDeleteClick(menuItem)
+                listener.onItemClick(menuItem)
             }
         }
     }

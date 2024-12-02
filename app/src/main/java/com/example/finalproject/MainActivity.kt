@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -11,12 +12,11 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), MenuAdapter.OnItemClickListener {
     private lateinit var menuDatabaseHelper: MenuDatabaseHelper
     private lateinit var menuAdapter: MenuAdapter
     private lateinit var menuRecyclerView: RecyclerView
-    private lateinit var addItemButton: Button
-    private lateinit var itemEditText: EditText
+
     private var items = mutableListOf<MenuItem>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,35 +28,15 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        addItemButton = findViewById(R.id.addButton)
-        itemEditText = findViewById(R.id.editText)
-        menuDatabaseHelper = MenuDatabaseHelper.getInstance(this)
-
-        //On click listener for the add task button to add a task and update the RV
-        addItemButton.setOnClickListener{
-            //Get the task text from the user's input
-            val item = itemEditText.text.toString().trim()
-            val calories = 100
-            if (item.isNotEmpty()) {
-                //Add the task to the database
-                menuDatabaseHelper.addItem(item, calories)
-                //Update the task list
-                items = menuDatabaseHelper.getAllItems().toMutableList()
-                //Update the RV
-                menuAdapter.updateItems(items)
-                //Clear the text to prepare for the next input
-                itemEditText.text.clear()
-            }
-        }
 
         //Function to update a task, update it in the task list, & update the RV
-        fun update(item: MenuItem, calories: Int){
+        fun update(item: MenuItem, name: String, calories: Int, ingredients: String, description: String){
             //Get the task from the list and update its check value
             val itemInList = items.find {it.name == item.name}
             if (itemInList != null && itemInList.name == item.name) {
                 itemInList.calories = calories
                 //Update the task in the database
-                menuDatabaseHelper.updateItem(item.name, calories)
+                menuDatabaseHelper.updateItem(item.id, name, calories, ingredients, description)
                 //Update the RV when it is ready
                 menuRecyclerView.post {
                     menuAdapter.updateItems(items)
@@ -82,11 +62,17 @@ class MainActivity : AppCompatActivity() {
 
         //Creating the RV and its adapter
         menuRecyclerView = findViewById(R.id.rvData)
-        menuAdapter = MenuAdapter(this, items, {item, calories -> update(item, calories)},
-            {item -> delete(item)})
+        menuAdapter = MenuAdapter(this, items, this, {item, name, calories, ingredients, details -> update(item, name, calories, ingredients, details)})
         menuRecyclerView.adapter = menuAdapter
         menuRecyclerView.layoutManager = LinearLayoutManager(this)
         items = menuDatabaseHelper.getAllItems().toMutableList()
         menuAdapter.updateItems(items)
+    }
+
+    override fun onItemClick(menuItem: MenuItem) {
+        Toast.makeText(this, "Clicked ${menuItem.name}", Toast.LENGTH_SHORT).show()
+        val detailsActivityIntent = Intent(this, ShowItemsActivity::class.java)
+        detailsActivityIntent.putExtra("MENU_ID", menuItem.id)
+        startActivity(detailsActivityIntent)
     }
 }
