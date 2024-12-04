@@ -46,11 +46,11 @@
 
     <Button
         android:id="@+id/createAccountButton"
-        android:layout_width="107dp"
+        android:layout_width="307dp"
         android:layout_height="60dp"
-        android:layout_marginStart="124dp"
+        android:layout_marginStart="25dp"
         android:layout_marginTop="26dp"
-        android:text="Sign up!"
+        android:text="Create Account"
         android:textAlignment="center" />
 
 </LinearLayout>
