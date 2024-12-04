@@ -19,6 +19,8 @@ class MainActivity : AppCompatActivity(), MenuAdapter.OnItemClickListener {
 
     private var items = mutableListOf<MenuItem>()
 
+    private var cart = mutableListOf<MenuItem>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -62,7 +64,7 @@ class MainActivity : AppCompatActivity(), MenuAdapter.OnItemClickListener {
 
         //Creating the RV and its adapter
         menuRecyclerView = findViewById(R.id.rvData)
-        menuAdapter = MenuAdapter(this, items, this, {item, name, calories, ingredients, details -> update(item, name, calories, ingredients, details)})
+        menuAdapter = MenuAdapter(this, items, this)
         menuRecyclerView.adapter = menuAdapter
         menuRecyclerView.layoutManager = LinearLayoutManager(this)
         items = menuDatabaseHelper.getAllItems().toMutableList()
@@ -72,7 +74,11 @@ class MainActivity : AppCompatActivity(), MenuAdapter.OnItemClickListener {
     override fun onItemClick(menuItem: MenuItem) {
         Toast.makeText(this, "Clicked ${menuItem.name}", Toast.LENGTH_SHORT).show()
         val detailsActivityIntent = Intent(this, ShowItemsActivity::class.java)
-        detailsActivityIntent.putExtra("MENU_ID", menuItem.id)
+        detailsActivityIntent.putExtra("NAME", menuItem.name)
+        detailsActivityIntent.putExtra("CALORIES", menuItem.calories)
+        detailsActivityIntent.putExtra("INGREDIENTS", menuItem.ingredients)
+        detailsActivityIntent.putExtra("DESCRIPTION", menuItem.description)
+
         startActivity(detailsActivityIntent)
     }
 }

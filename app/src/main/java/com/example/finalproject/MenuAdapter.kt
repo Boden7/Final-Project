@@ -11,9 +11,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class MenuAdapter(private val context: Context, private var items: List<MenuItem>,
-                  private val listener: OnItemClickListener,
-                  private var addToCart: (MenuItem) -> Unit
-) : RecyclerView.Adapter<MenuAdapter.TaskViewHolder>() {
+                  private val listener: OnItemClickListener) :
+                  RecyclerView.Adapter<MenuAdapter.TaskViewHolder>() {
     interface OnItemClickListener {
         fun onItemClick(menuItem: MenuItem)
     }
