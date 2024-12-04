@@ -13,13 +13,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity(), MenuAdapter.OnItemClickListener {
-    private lateinit var menuDatabaseHelper: MenuDatabaseHelper
     private lateinit var menuAdapter: MenuAdapter
     private lateinit var menuRecyclerView: RecyclerView
 
     private var items = mutableListOf<MenuItem>()
-
-    private var cart = mutableListOf<MenuItem>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +35,7 @@ class MainActivity : AppCompatActivity(), MenuAdapter.OnItemClickListener {
             if (itemInList != null && itemInList.name == item.name) {
                 itemInList.calories = calories
                 //Update the task in the database
-                menuDatabaseHelper.updateItem(item.id, name, calories, ingredients, description)
+                //menuDatabaseHelper.updateItem(item.id, name, calories, ingredients, description)
                 //Update the RV when it is ready
                 menuRecyclerView.post {
                     menuAdapter.updateItems(items)
@@ -49,17 +46,11 @@ class MainActivity : AppCompatActivity(), MenuAdapter.OnItemClickListener {
         //Function to delete an item, remove it from the item list, & update the RV
         fun delete(item: MenuItem){
             //Delete the item from the RV
-            menuDatabaseHelper.deleteItem(item.id)
+            //menuDatabaseHelper.deleteItem(item.id)
             //Remove it from the item list
             items.remove(item)
             //Update the RV
             menuAdapter.updateItems(items)
-        }
-
-        val button = findViewById<Button>(R.id.meetUsButton)
-        button.setOnClickListener {
-            val intent = Intent(this, MeetTheChef::class.java)
-            startActivity(intent)
         }
 
         //Creating the RV and its adapter
@@ -67,7 +58,7 @@ class MainActivity : AppCompatActivity(), MenuAdapter.OnItemClickListener {
         menuAdapter = MenuAdapter(this, items, this)
         menuRecyclerView.adapter = menuAdapter
         menuRecyclerView.layoutManager = LinearLayoutManager(this)
-        items = menuDatabaseHelper.getAllItems().toMutableList()
+        //items = menuDatabaseHelper.getAllItems().toMutableList()
         menuAdapter.updateItems(items)
     }
 
