@@ -19,6 +19,9 @@
             android:name=".SelectionActivity"
             android:exported="false" />
         <activity
+            android:name=".MeetTheChef"
+            android:exported="false" />
+        <activity
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
@@ -29,9 +32,6 @@
         </activity>
         <activity
             android:name=".ShowItemsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MeetTheChef"
             android:exported="false" />
         <activity
             android:name=".MenuAdapter"
