@@ -34,15 +34,14 @@ class MainActivity : AppCompatActivity(), MenuAdapter.OnItemClickListener {
         menuAdapter = MenuAdapter(this, items, this)
         menuRecyclerView.adapter = menuAdapter
         menuRecyclerView.layoutManager = LinearLayoutManager(this)
-        //items = menuDatabaseHelper.getAllItems().toMutableList()
 
+        menuAdapter.updateItems()
 
-
-        val database = FirebaseDatabase.getInstance()
-        val myRef = database.getReference("menu")
-        val itemRef = myRef.child(name)
-
-        menuAdapter.updateItems(items)
+        val backButton = findViewById<Button>(R.id.backButton)
+        backButton.setOnClickListener {
+            val intent = Intent(this, SelectionActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onItemClick(menuItem: MenuItem) {

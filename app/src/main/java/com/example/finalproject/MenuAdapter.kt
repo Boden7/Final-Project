@@ -2,15 +2,18 @@ package com.example.finalproject
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView.OnItemClickListener
-import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.database.ChildEventListener
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
 
-class MenuAdapter(private val context: Context, private var items: List<MenuItem>,
+class MenuAdapter(private val context: Context, private var items: MutableList<MenuItem>,
                   private val listener: OnItemClickListener) :
                   RecyclerView.Adapter<MenuAdapter.TaskViewHolder>() {
     interface OnItemClickListener {
@@ -31,9 +34,43 @@ class MenuAdapter(private val context: Context, private var items: List<MenuItem
 
     override fun getItemCount(): Int = items.size
 
-    fun updateItems(newItems: List<MenuItem>) {
-        items = newItems
-        notifyDataSetChanged()
+    fun updateItems() {
+        val database = FirebaseDatabase.getInstance()
+        val myRef = database.getReference("menu")
+        myRef.addChildEventListener(object: ChildEventListener {
+            override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
+                val item = snapshot.getValue(MenuItem::class.java)
+                if (item != null){
+                    items.add(item)
+                    notifyDataSetChanged()
+                }
+            }
+
+            override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onChildRemoved(snapshot: DataSnapshot) {
+                val item = snapshot.getValue(MenuItem::class.java)
+                if (item != null){
+                    items.remove(item)
+                    notifyDataSetChanged()
+                }
+            }
+
+            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
+                //Use if needed
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                //Use if needed
+            }
+        })
+
+        //var newItemsList: MutableList<MenuItem>
+
+        //items = newItemsList
+
     }
 
     inner class TaskViewHolder(itemView: View) :

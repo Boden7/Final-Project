@@ -27,6 +27,11 @@ class SelectionActivity : AppCompatActivity() {
             val intent = Intent(this, MeetTheChef::class.java)
             startActivity(intent)
         }
+        val displayButton = findViewById<Button>(R.id.viewButton)
+        displayButton.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
         val editButton = findViewById<Button>(R.id.editButton)
         editButton.setOnClickListener {
             val intent = Intent(this, EditDatabaseActivity::class.java)
