@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:id="@+id/main"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:context=".LoginActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8083C"
+    tools:context=".LoginActivity">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilEmail"
         android:layout_width="381dp"
         android:layout_height="86dp"
+        android:textColorHint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -22,8 +24,10 @@ tools:context=".LoginActivity">
             android:id="@+id/tietEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="casual"
             android:hint="Enter Email Address"
             android:inputType="textEmailAddress"
+            android:textColor="#FFFFFF"
             android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -33,6 +37,7 @@ tools:context=".LoginActivity">
         android:layout_height="60dp"
         android:text="Sign Up"
         android:textAlignment="center"
+        android:fontFamily="casual"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
@@ -44,6 +49,8 @@ tools:context=".LoginActivity">
         android:id="@+id/tilPasswordConfirm"
         android:layout_width="380dp"
         android:layout_height="84dp"
+        android:fontFamily="casual"
+        android:textColorHint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.451"
@@ -55,7 +62,9 @@ tools:context=".LoginActivity">
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Re-enter Password"
+            android:fontFamily="casual"
             android:inputType="textPassword"
+            android:textColor="#FFFFFF"
             android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -64,10 +73,10 @@ tools:context=".LoginActivity">
         android:layout_width="381dp"
         android:layout_height="73dp"
         android:layout_marginTop="116dp"
-        android:fontFamily="sans-serif-condensed"
+        android:fontFamily="casual"
         android:text="Please enter the details for your account"
         android:textAlignment="center"
-        android:textColor="#9C27B0"
+        android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
@@ -79,6 +88,7 @@ tools:context=".LoginActivity">
         android:id="@+id/tilPassword"
         android:layout_width="380dp"
         android:layout_height="84dp"
+        android:textColorHint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.451"
@@ -90,7 +100,9 @@ tools:context=".LoginActivity">
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter Password"
+        android:fontFamily="casual"
         android:inputType="textPassword"
+        android:textColor="#FFFFFF"
         android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -99,6 +111,7 @@ tools:context=".LoginActivity">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Back"
+        android:fontFamily="casual"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.046"

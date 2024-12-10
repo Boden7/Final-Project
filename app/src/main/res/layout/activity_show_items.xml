@@ -5,15 +5,17 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FF0000"
+    android:background="#F8083C"
+    android:padding="16dp"
     tools:context=".ShowItemsActivity">
 
     <TextView
         android:id="@+id/menuItem"
-        android:layout_width="410dp"
+        android:layout_width="380dp"
         android:layout_height="48dp"
+        android:fontFamily="casual"
         android:text="Error Item Not Found"
-        android:textColor="#19E902"
+        android:textColor="#FFFFFF"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -25,10 +27,11 @@
 
     <TextView
         android:id="@+id/caloriesText"
-        android:layout_width="410dp"
+        android:layout_width="380dp"
         android:layout_height="31dp"
         android:text=""
-        android:textColor="#19E902"
+        android:textColor="#FFFFFF"
+        android:fontFamily="casual"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.059"
@@ -38,10 +41,11 @@
 
     <TextView
         android:id="@+id/ingredientsText"
-        android:layout_width="410dp"
+        android:layout_width="380dp"
         android:layout_height="31dp"
         android:text=""
-        android:textColor="#19E902"
+        android:textColor="#FFFFFF"
+        android:fontFamily="casual"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.058"
@@ -51,10 +55,11 @@
 
     <TextView
         android:id="@+id/descriptionText"
-        android:layout_width="410dp"
+        android:layout_width="380dp"
         android:layout_height="31dp"
         android:text=""
-        android:textColor="#19E902"
+        android:textColor="#FFFFFF"
+        android:fontFamily="casual"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.058"
@@ -67,6 +72,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Back"
+        android:fontFamily="casual"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.049"

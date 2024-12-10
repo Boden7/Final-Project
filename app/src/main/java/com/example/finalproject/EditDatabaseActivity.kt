@@ -85,5 +85,10 @@ class EditDatabaseActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
+        val backButton = findViewById<Button>(R.id.backButton)
+        backButton.setOnClickListener{
+            val intent = Intent(this, SelectionActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

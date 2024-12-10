@@ -8,16 +8,17 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
+    android:background="#F8083C"
     tools:context=".LoginActivity">
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="73dp"
-        android:fontFamily="sans-serif-condensed"
+        android:fontFamily="casual"
         android:text="You have successfully created an account! Welcome!"
         android:textAlignment="center"
-        android:textColor="#9C27B0"
+        android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -32,6 +33,7 @@
         android:layout_width="381dp"
         android:layout_height="86dp"
         android:inputType="textEmailAddress"
+        android:textColorHint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -43,15 +45,19 @@
             android:id="@+id/tietEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="casual"
             android:hint="Enter Email Address"
             android:inputType="textEmailAddress"
-            android:maxLines="1" />
+            android:maxLines="1"
+            android:textColor="#FFFFFF"
+            android:textColorLink="#FFFFFF" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilPassword"
         android:layout_width="381dp"
         android:layout_height="86dp"
+        android:textColorHint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -63,6 +69,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter Password"
+            android:textColor="#FFFFFF"
+            android:fontFamily="casual"
             android:inputType="textPassword"
             android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -73,6 +81,7 @@
         android:layout_height="60dp"
         android:text="Login"
         android:textAlignment="center"
+        android:fontFamily="casual"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -85,6 +94,7 @@
         android:layout_height="60dp"
         android:text="No account? Create one!"
         android:textAlignment="center"
+        android:fontFamily="casual"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
