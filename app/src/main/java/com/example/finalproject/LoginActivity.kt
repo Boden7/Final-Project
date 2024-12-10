@@ -13,16 +13,16 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity() {
-    private lateinit var emailET: EditText
-    private lateinit var passwordET: EditText
+    private lateinit var emailET: TextInputEditText
+    private lateinit var passwordET: TextInputEditText
     private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_login)
         auth = FirebaseAuth.getInstance()
-        emailET = findViewById(R.id.etEmail)
-        passwordET = findViewById(R.id.etPassword)
+        emailET = findViewById(R.id.tietEmail)
+        passwordET = findViewById(R.id.tietPassword)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -54,7 +54,6 @@ class LoginActivity : AppCompatActivity() {
                     }
                 }
             }
-            //val intent = Intent(this)
         }
     }
 }

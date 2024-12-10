@@ -11,6 +11,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.database.FirebaseDatabase
 
 class MainActivity : AppCompatActivity(), MenuAdapter.OnItemClickListener {
     private lateinit var menuAdapter: MenuAdapter
@@ -28,37 +29,19 @@ class MainActivity : AppCompatActivity(), MenuAdapter.OnItemClickListener {
             insets
         }
 
-        //Function to update a task, update it in the task list, & update the RV
-        fun update(item: MenuItem, name: String, calories: Int, ingredients: String, description: String){
-            //Get the task from the list and update its check value
-            val itemInList = items.find {it.name == item.name}
-            if (itemInList != null && itemInList.name == item.name) {
-                itemInList.calories = calories
-                //Update the task in the database
-                //menuDatabaseHelper.updateItem(item.id, name, calories, ingredients, description)
-                //Update the RV when it is ready
-                menuRecyclerView.post {
-                    menuAdapter.updateItems(items)
-                }
-            }
-        }
-
-        //Function to delete an item, remove it from the item list, & update the RV
-        fun delete(item: MenuItem){
-            //Delete the item from the RV
-            //menuDatabaseHelper.deleteItem(item.id)
-            //Remove it from the item list
-            items.remove(item)
-            //Update the RV
-            menuAdapter.updateItems(items)
-        }
-
         //Creating the RV and its adapter
         menuRecyclerView = findViewById(R.id.rvData)
         menuAdapter = MenuAdapter(this, items, this)
         menuRecyclerView.adapter = menuAdapter
         menuRecyclerView.layoutManager = LinearLayoutManager(this)
         //items = menuDatabaseHelper.getAllItems().toMutableList()
+
+
+
+        val database = FirebaseDatabase.getInstance()
+        val myRef = database.getReference("menu")
+        val itemRef = myRef.child(name)
+
         menuAdapter.updateItems(items)
     }
 
@@ -66,10 +49,6 @@ class MainActivity : AppCompatActivity(), MenuAdapter.OnItemClickListener {
         Toast.makeText(this, "Clicked ${menuItem.name}", Toast.LENGTH_SHORT).show()
         val detailsActivityIntent = Intent(this, ShowItemsActivity::class.java)
         detailsActivityIntent.putExtra("NAME", menuItem.name)
-        detailsActivityIntent.putExtra("CALORIES", menuItem.calories)
-        detailsActivityIntent.putExtra("INGREDIENTS", menuItem.ingredients)
-        detailsActivityIntent.putExtra("DESCRIPTION", menuItem.description)
-
         startActivity(detailsActivityIntent)
     }
 }

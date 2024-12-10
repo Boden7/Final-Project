@@ -21,7 +21,7 @@ class MeetTheChef : AppCompatActivity() {
 
         val backButton = findViewById<Button>(R.id.backButton)
         backButton.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, SelectionActivity::class.java)
             startActivity(intent)
         }
     }

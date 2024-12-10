@@ -3,7 +3,6 @@ package com.example.finalproject
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -13,9 +12,9 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 
 class CreateAccountActivity : AppCompatActivity() {
-    private lateinit var emailET:EditText
-    private lateinit var passwordET: EditText
-    private lateinit var passwordConfirmET:EditText
+    private lateinit var emailET:TextInputEditText
+    private lateinit var passwordET: TextInputEditText
+    private lateinit var passwordConfirmET:TextInputEditText
     private lateinit var auth:FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,9 +26,9 @@ class CreateAccountActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        emailET = findViewById(R.id.etEmail)
-        passwordET = findViewById(R.id.etPassword)
-        passwordConfirmET = findViewById(R.id.etPasswordConfirm)
+        emailET = findViewById(R.id.tietEmail)
+        passwordET = findViewById(R.id.tietPassword)
+        passwordConfirmET = findViewById(R.id.tietPasswordConfirm)
         auth = FirebaseAuth.getInstance()
         val backButton = findViewById<Button>(R.id.backButton)
         backButton.setOnClickListener {
