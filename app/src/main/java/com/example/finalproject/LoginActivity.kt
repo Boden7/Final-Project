@@ -1,18 +1,16 @@
-"""
+package com.example.finalproject
+
+/*
  * LoginActivity.kt
  * Android App Development - CSCI 380
  * By Jordan Brown and Boden Kahn
 
  * This file provides authentication to our menu app
-"""
-
-
-package com.example.finalproject
+*/
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -80,6 +78,7 @@ class LoginActivity : AppCompatActivity() {
                         // If the user could not be authenticated they are shown a toast
                         // informing them that they were not able to be authenticated
                         Toast.makeText(this, "Authentication unsuccessful", Toast.LENGTH_SHORT).show()
+                        passwordET.setText("")
                     }
                 }
             }

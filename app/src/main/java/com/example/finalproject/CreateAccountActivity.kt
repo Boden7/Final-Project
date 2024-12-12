@@ -1,13 +1,13 @@
-"""
+package com.example.finalproject
+
+/*
  * CreateAccountActivity.kt
  * Android App Development - CSCI 380
  * By Jordan Brown and Boden Kahn
 
  * This file adds functionality for the creation of user accounts to eventually allow authentication
  * into our menu app
-"""
-
-package com.example.finalproject
+*/
 
 import android.content.Intent
 import android.os.Bundle
@@ -70,6 +70,8 @@ class CreateAccountActivity : AppCompatActivity() {
                 // If not equal prompts users to input matching passwords
                 Toast.makeText(this, "Passwords must match", Toast.LENGTH_SHORT).show()
                 passwordConfirmET.error = "Passwords must match"
+                passwordET.setText("")
+                passwordConfirmET.setText("")
             }
             else {
                 // If passwords were equal we attempt to add a new user to the firebase
@@ -87,6 +89,8 @@ class CreateAccountActivity : AppCompatActivity() {
                         // Otherwise if the account creation was unsuccessful we show a toast
                         // informing users that their account could not be created
                         Toast.makeText(this, "Sign up unsuccessful", Toast.LENGTH_SHORT).show()
+                        passwordET.setText("")
+                        passwordConfirmET.setText("")
                     }
                 }
             }

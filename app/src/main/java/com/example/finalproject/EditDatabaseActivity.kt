@@ -1,14 +1,13 @@
-"""
+package com.example.finalproject
+
+/*
  * EditDatabaseActivity.kt
  * Android App Development - CSCI 380
  * By Jordan Brown and Boden Kahn
 
  * This file provides the ability for users to add, delete and search for specific items while also
  * allowing them to travel to another intent to view the entire menu stored in our database
-"""
-
-
-package com.example.finalproject
+*/
 
 import android.content.Intent
 import android.os.Bundle
@@ -77,6 +76,10 @@ class EditDatabaseActivity : AppCompatActivity() {
                     // If the item was successfully added we show a toast informing the user of its
                     // addition
                     Toast.makeText(this, "Menu Item Added", Toast.LENGTH_SHORT).show()
+                    etName.setText("")
+                    etCalories.setText("")
+                    etIngredients.setText("")
+                    etPrice.setText("")
                 }.addOnFailureListener{
                     // Otherwise, on a failure we show a toast informing users it could not be added
                     Toast.makeText(this, "Menu Item Not Added", Toast.LENGTH_SHORT).show()
@@ -105,6 +108,10 @@ class EditDatabaseActivity : AppCompatActivity() {
                     // If the item was successfully added to the database we show a toast informing
                     // the user of its deletion
                     Toast.makeText(this, "Item deleted", Toast.LENGTH_SHORT).show()
+                    etName.setText("")
+                    etCalories.setText("")
+                    etIngredients.setText("")
+                    etPrice.setText("")
                 }.addOnFailureListener{
                     // Otherwise, we print a toast showing that the item could not be deleted
                     Toast.makeText(this, "Error deleting item", Toast.LENGTH_SHORT).show()

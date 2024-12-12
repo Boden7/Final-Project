@@ -1,17 +1,16 @@
-"""
+package com.example.finalproject
+
+/*
  * MainActivity.kt
  * Android App Development - CSCI 380
  * By Jordan Brown and Boden Kahn
 
  * This file houses the recycler view that displays our menu and the items within it
-"""
-
-package com.example.finalproject
+*/
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity

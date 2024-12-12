@@ -42,7 +42,7 @@
         android:fontFamily="casual"
         android:text="Welcome to our soon to be world famous bean restaurant! We just started cooking earlier today but are very excited to share our creations with the world. Head chef Boden, also known as Mr. Bean, and sous chef Jordan travel to large, world famous baked bean distributers to source only the most fresh and apetizing baked beans for your enjoyement. The extraordinary dishes that we serve have been handed down through generations and we hope that you also can see the beauty within them."
         android:textColor="#FFFFFF"
-        android:textSize="17sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
