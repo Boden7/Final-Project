@@ -11,61 +11,70 @@
 
     <TextView
         android:id="@+id/menuItem"
-        android:layout_width="380dp"
-        android:layout_height="48dp"
+        android:layout_width="352dp"
+        android:layout_height="49dp"
         android:fontFamily="casual"
+        android:gravity="center"
         android:text="Error Item Not Found"
+        android:textAlignment="textStart"
         android:textColor="#FFFFFF"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.518"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.062" />
+        app:layout_constraintVertical_bias="0.049" />
 
     <TextView
         android:id="@+id/caloriesText"
-        android:layout_width="380dp"
-        android:layout_height="31dp"
-        android:text=""
-        android:textColor="#FFFFFF"
+        android:layout_width="383dp"
+        android:layout_height="wrap_content"
         android:fontFamily="casual"
+        android:gravity="center"
+        android:text=""
+        android:textAlignment="textStart"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.059"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.182" />
+        app:layout_constraintVertical_bias="0.189" />
 
     <TextView
         android:id="@+id/ingredientsText"
-        android:layout_width="380dp"
-        android:layout_height="31dp"
-        android:text=""
-        android:textColor="#FFFFFF"
+        android:layout_width="383dp"
+        android:layout_height="wrap_content"
         android:fontFamily="casual"
+        android:gravity="center"
+        android:text=""
+        android:textAlignment="textStart"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.058"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.265" />
+        app:layout_constraintTop_toBottomOf="@+id/priceText"
+        app:layout_constraintVertical_bias="0.137" />
 
     <TextView
-        android:id="@+id/descriptionText"
-        android:layout_width="380dp"
-        android:layout_height="31dp"
-        android:text=""
-        android:textColor="#FFFFFF"
+        android:id="@+id/priceText"
+        android:layout_width="349dp"
+        android:layout_height="45dp"
         android:fontFamily="casual"
+        android:gravity="center"
+        android:text=""
+        android:textAlignment="textStart"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.058"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.346" />
+        app:layout_constraintTop_toBottomOf="@+id/caloriesText"
+        app:layout_constraintVertical_bias="0.123" />
 
     <Button
         android:id="@+id/returnButton"

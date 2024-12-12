@@ -15,7 +15,7 @@ class EditDatabaseActivity : AppCompatActivity() {
     private lateinit var etName: EditText
     private lateinit var etCalories: EditText
     private lateinit var etIngredients: EditText
-    private lateinit var etDescription: EditText
+    private lateinit var etPrice: EditText
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -28,7 +28,7 @@ class EditDatabaseActivity : AppCompatActivity() {
         etName = findViewById(R.id.etName)
         etCalories = findViewById(R.id.etCalories)
         etIngredients = findViewById(R.id.etIngredients)
-        etDescription = findViewById(R.id.etDescription)
+        etPrice = findViewById(R.id.etPrice)
 
         var addButton = findViewById<Button>(R.id.btnAdd)
         var searchButton = findViewById<Button>(R.id.btnSearch)
@@ -39,15 +39,16 @@ class EditDatabaseActivity : AppCompatActivity() {
             val name = etName.text.toString()
             val caloriesInput = etCalories.text.toString()
             val ingredients = etIngredients.text.toString()
-            val description = etDescription.text.toString()
-            if (name.isEmpty() || caloriesInput.isEmpty() || ingredients.isEmpty() || description.isEmpty()){
+            val priceInput = etPrice.text.toString()
+            if (name.isEmpty() || caloriesInput.isEmpty() || ingredients.isEmpty() || priceInput.isEmpty()){
                 Toast.makeText(this, "Please fill out all fields", Toast.LENGTH_SHORT).show()
             }
             else {
                 val database = FirebaseDatabase.getInstance()
                 val myRef = database.getReference("menu")
+                val price = priceInput.toDouble()
                 val calories = caloriesInput.toInt()
-                val menuItem = MenuItem(name, calories, ingredients, description)
+                val menuItem = MenuItem(name, calories, ingredients, price)
                 myRef.child(name).setValue(menuItem).addOnSuccessListener {
                     Toast.makeText(this, "Menu Item Added", Toast.LENGTH_SHORT).show()
                 }.addOnFailureListener{

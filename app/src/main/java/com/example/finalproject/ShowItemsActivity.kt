@@ -26,7 +26,7 @@ class ShowItemsActivity : AppCompatActivity() {
         val nameTV = findViewById<TextView>(R.id.menuItem)
         val caloriesTV = findViewById<TextView>(R.id.caloriesText)
         val ingredientsTV = findViewById<TextView>(R.id.ingredientsText)
-        val descriptionTV = findViewById<TextView>(R.id.descriptionText)
+        val priceTV = findViewById<TextView>(R.id.priceText)
         val name = intent.getStringExtra("NAME")
 
         val database = FirebaseDatabase.getInstance()
@@ -38,9 +38,11 @@ class ShowItemsActivity : AppCompatActivity() {
                     val item = snapshot.getValue(MenuItem::class.java)
                     if (item != null){
                         nameTV.text = name
-                        caloriesTV.text = item.calories.toString()
+                        val calories = item.calories.toString() + " calories"
+                        caloriesTV.text = calories
                         ingredientsTV.text = item.ingredients
-                        descriptionTV.text = item.description
+                        val price = "$" + item.price.toString()
+                        priceTV.text = price
                     }
                     else {
                         Toast.makeText(this, "User doesn't exist", Toast.LENGTH_SHORT).show()

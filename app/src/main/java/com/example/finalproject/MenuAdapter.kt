@@ -13,6 +13,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 
+
 class MenuAdapter(private val context: Context, private var items: MutableList<MenuItem>,
                   private val listener: OnItemClickListener) :
                   RecyclerView.Adapter<MenuAdapter.TaskViewHolder>() {
@@ -66,22 +67,17 @@ class MenuAdapter(private val context: Context, private var items: MutableList<M
                 //Use if needed
             }
         })
-
-        //var newItemsList: MutableList<MenuItem>
-
-        //items = newItemsList
-
     }
 
     inner class TaskViewHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView) {
-        private val caloriesText: TextView = itemView.findViewById(R.id.caloriesText)
+        private val priceText: TextView = itemView.findViewById(R.id.priceText)
         private val menuText: TextView = itemView.findViewById(R.id.menuItem)
         private val detailsButton: ImageView = itemView.findViewById(R.id.detailsButton)
 
         fun bind(menuItem: MenuItem, listener: OnItemClickListener) {
             menuText.text = menuItem.name
-            caloriesText.text = menuItem.calories.toString()
+            priceText.text = menuItem.price.toString()
             detailsButton.setOnClickListener {
                 listener.onItemClick(menuItem)
             }

@@ -11,7 +11,6 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.database.FirebaseDatabase
 
 class MainActivity : AppCompatActivity(), MenuAdapter.OnItemClickListener {
     private lateinit var menuAdapter: MenuAdapter
