@@ -3,6 +3,7 @@ package com.example.finalproject
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -22,7 +23,7 @@ class SelectionActivity : AppCompatActivity() {
         }
 
         var auth = FirebaseAuth.getInstance()
-        val meetUsButton = findViewById<Button>(R.id.meetUsButton)
+        val meetUsButton = findViewById<ImageView>(R.id.meetUsButton)
         meetUsButton.setOnClickListener {
             val intent = Intent(this, MeetTheChef::class.java)
             startActivity(intent)
