@@ -1,3 +1,11 @@
+"""
+ * MainActivity.kt
+ * Android App Development - CSCI 380
+ * By Jordan Brown and Boden Kahn
+
+ * This file houses the recycler view that displays our menu and the items within it
+"""
+
 package com.example.finalproject
 
 import android.content.Intent
@@ -16,6 +24,7 @@ class MainActivity : AppCompatActivity(), MenuAdapter.OnItemClickListener {
     private lateinit var menuAdapter: MenuAdapter
     private lateinit var menuRecyclerView: RecyclerView
 
+    // List of all items stored in the menu database
     private var items = mutableListOf<MenuItem>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +37,7 @@ class MainActivity : AppCompatActivity(), MenuAdapter.OnItemClickListener {
             insets
         }
 
-        //Creating the RV and its adapter
+        //Creating the recycler view and its adapter
         menuRecyclerView = findViewById(R.id.rvData)
         menuAdapter = MenuAdapter(this, items, this)
         menuRecyclerView.adapter = menuAdapter
@@ -36,6 +45,8 @@ class MainActivity : AppCompatActivity(), MenuAdapter.OnItemClickListener {
 
         menuAdapter.updateItems()
 
+        // Initializes and adds a listener for the back button to take users back to the selection
+        // activity
         val backButton = findViewById<Button>(R.id.backButton)
         backButton.setOnClickListener {
             val intent = Intent(this, SelectionActivity::class.java)
@@ -43,6 +54,8 @@ class MainActivity : AppCompatActivity(), MenuAdapter.OnItemClickListener {
         }
     }
 
+    // When an item in the recycler view is clicked the users are taken to the show items activity
+    // that shows the menu item's name, calories, price and ingredients
     override fun onItemClick(menuItem: MenuItem) {
         Toast.makeText(this, "Clicked ${menuItem.name}", Toast.LENGTH_SHORT).show()
         val detailsActivityIntent = Intent(this, ShowItemsActivity::class.java)
